@@ -1,8 +1,22 @@
 {%extends 'base.html'%}
+
+<!-- js scripts -->
+{% block scripts %}
+<script src="{{url_for('static', filename='js/script.js')}}"></script>
+{{super()}}
+{% endblock %}
+
+<!--styes block  -->
+{%block styles%}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/indexx.css') }}">
+{%endblock%}
+
+
 {%block content%}
 <div class="row">
     <div class="col-md-4">
-        <h1>Jobs, Skills, and the Potential of AI in Kenya<h1>
+        <h1>Jobs, Skills, and the Potential of AI in Kenya</h1>
         <p>SAORI IMAIZUMI</p>
         <p>posted at:</p>
         <a href="blog.html"></a>
