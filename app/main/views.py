@@ -1,11 +1,11 @@
 from flask import render_template,redirect,url_for
-from app import app
-from .models import comments
+from . import main
+from ..models import Comment
 from .forms import CommentForm
-Comment=comments.Comment
+
 
 #views
-@app.route("/")
+@main.route("/")
 def index():
     """
     views the index page and its data
@@ -13,7 +13,7 @@ def index():
     title="Drew Of Lines"
     return render_template('index.html',title=title)
 
-@app.route('/blog/<user_id>')
+@main.route('/blog/<user_id>')
 def blog(user_id):
     """
     views to show the authors blog
@@ -22,7 +22,7 @@ def blog(user_id):
     return render_template('blog.html',author=user_id,title=title)
     
 
-@app.route('/blog/comment/<blog_id>',methods = ['GET','POST'])
+@main.route('/blog/comment/<blog_id>',methods = ['GET','POST'])
 def new_comment(blog_id):
     form=CommentForm()
 
@@ -31,7 +31,7 @@ def new_comment(blog_id):
         comment=form.comment.data
         new_comment=Comment(blog_id,blog,comment)
         new_comment.save_comment()
-        return redirect(url_for('blog',author = user_id ))
+        return redirect(url_for('.blog',author = user_id ))
 
     title='read african blog'
     return render_template('comment.html',title=title,comment_form=form)
