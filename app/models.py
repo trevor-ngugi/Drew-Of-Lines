@@ -4,6 +4,7 @@ class User(db.Model):
     __tablename__='users'
     id=db.Column(db.Integer,primary_key = True)
     username=db.Column(db.String(255))
+    blog=db.relationship('Blog',backref='user',lazy='dynamic')
     
 
     def __repr__(self):
@@ -11,14 +12,16 @@ class User(db.Model):
 
 class Blog(db.Model):
     __tablename__='blogs'
-    blog_id=db.Column(db.Integer,primary_key=True)
-    blog_title=db.Column(db.String(100))
-    blog_content=db.column(db.String)
-    blog_author=db.Column(db.String(256))
+    id=db.Column(db.Integer,primary_key=True)
+    blog_title=db.Column(db.String(255))
+    blog_content=db.Column(db.String(255))#try using text
+    blog_author=db.Column(db.String(50))
+    author_id=db.Column(db.Integer,db.ForeignKey('users.id'))
+    
     #postedat
 
     def __repr__(self):
-        return f'User {self.username}'
+        return f'Blog {self.blog_title}'
 
 
 
