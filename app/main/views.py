@@ -1,6 +1,6 @@
-from flask import render_template,redirect,url_for
+from flask import render_template,redirect,url_for,abort
 from . import main
-from ..models import Comment
+from ..models import Comment,User
 from .forms import CommentForm
 from flask_login import login_required
 
@@ -37,3 +37,12 @@ def new_comment(blog_id):
 
     title='read african blog'
     return render_template('comment.html',title=title,comment_form=form)
+
+@main.route('/user/<uname>')
+def profile(uname):
+    user = User.query.filter_by(username = uname).first()
+
+    if user is None:
+        abort(404)
+
+    return render_template("profile/profile.html", user = user)
