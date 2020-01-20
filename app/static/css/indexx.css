@@ -4,3 +4,8 @@ p{
 h1{
     color: #63BCBF;
 }
+body{
+    background-image:url("../photos/blogbg.png");
+    background-size: cover;
+    background-attachment: fixed;
+}
