@@ -1,3 +1,4 @@
+{% import 'macros.html' as macro%}
 {%extends 'base.html'%}
 
 <!-- js scripts -->
@@ -27,18 +28,53 @@
         <h1>Africa’s connectivity gap: Can a map tell the story?</h1>
         <p>ROKU FUKUI,CHRISTOPHER JAMES ARDERNE and TIM KELLY</p>
         <p>posted at:</p>
-        <a href="blog.html"></a>
-        <button type='button'>read more</button> 
-        </a>
+        <a href="/blog/user_id">
+          <button type='button'>read more</button> 
+          </a>
     </div>
     <div class="col-md-4">
         <h1>New HIV infections down 40% since 1998</h1>
         <p>EMI SUZUKI</p>
         <p>posted at :</p>
-        <a href="blog.html"></a>
-        <button type='button'>read more</button> 
-        </a>
+        <a href="/blog/user_id">
+          <button type='button'>read more</button> 
+          </a>
     </div>
+    <a  href="/blog/new/"> Write a new blog</a>
+
+
+    <!-- <h3 class="post-subtitle"> Click blog to view or comment</h3>
+        {%for blog in allblogs %}
+        <div class="post-preview">
+          <a href="{{url_for('main.post', post_id=post.id)}}">
+            <h2 class="post-title">
+            
+             {{post.title}}
+            </h2>
+            <h3 class="post-subtitle">
+              {{post.subtitle}}
+            </h3>
+          </a>
+          <p class="post-meta">Posted by
+            {{post.name}}
+            on {{post.date.strftime('%B %d, %Y')}} at {{post.date.strftime('%I : %M %p')}}</p>
+        </div>
+        {% endfor %} -->
+</div>
+<div class="row">
+
+    <h1>blogs</h1>
+    <hr>
+
+    {% if blogs %}
+        {{macro.displayblogs(blogs)}}
+
+    {% else%}
+        <h3 class="text-center">no new blogs yet </h3>
+
+        <a class="btn btn-success btn-lg text-center" href="/blog/new/"> Write a new blog</a>
+    {% endif %}
+
 </div>
 <!-- <h1>blog title</h1>
 <p>author</p>

@@ -1,0 +1,15 @@
+<!-- Displaying reviews macro -->
+{% macro displayBlogs(blog_list) %}
+
+    {% for blog in blog_list %}
+
+    <div class="row">
+
+      <div class="col-xs-2 col-sm-2 col-md-4 col-lg-4">
+        <h4>Author</h4>
+        <p>{{blog.blog_author}}</p>
+      </div>
+    </div>
+
+    {% endfor %}
+{% endmacro %}
