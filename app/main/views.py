@@ -2,6 +2,7 @@ from flask import render_template,redirect,url_for
 from . import main
 from ..models import Comment
 from .forms import CommentForm
+from flask_login import login_required
 
 
 #views
@@ -23,6 +24,7 @@ def blog(user_id):
     
 
 @main.route('/blog/comment/<blog_id>',methods = ['GET','POST'])
+@login_required
 def new_comment(blog_id):
     form=CommentForm()
 
