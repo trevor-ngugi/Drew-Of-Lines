@@ -7,6 +7,7 @@ class Config:
     '''
     SECRET_KEY=os.environ.get('SECRET_KEY')
     SQLALCHEMY_DATABASE_URI='postgresql+psycopg2://trevor:elite@localhost/dol'
+    UPLOADED_PHOTOS_DEST ='app/static/photos'
     
 
 
